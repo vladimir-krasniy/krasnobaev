@@ -24,9 +24,11 @@ main:
         addl $8, %esp
 
         movl number, %ecx
+        cmpl $0, %ecx #equevalents to while (i=n;i>0;i--)
+
 
 cycle:
-        movl %ecx, %eax #equevalents to while (i=n;i>0;i--)
+        movl %ecx, %eax 
         pushl %eax
         pushl $out_string
         call printf
