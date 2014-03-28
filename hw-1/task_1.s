@@ -23,19 +23,19 @@ main:
 	
 //Real main
 	movl int_space, %eax
-	movl $32, %ecx //ecx is digit counter 
+	movl $32, %ecx #ecx is digit counter 
 	movl $0, %edx
 	
 shear:
 	shll $1, %eax
 	movl $0, %ebx
-	jnb print //do not print first '0'
+	jnb print #do not print first '0'
 	incl %ebx
 	movl $1, %edx
 	
 print:
 	cmpl $1, %edx
-	jne loop_end // do not print first '0'
+	jne loop_end #do not print first '0'
 	pushl %ecx
 	pushl %eax
 	pushl %edx
@@ -48,7 +48,7 @@ print:
 	popl %ecx
 	
 loop_end:
-	loop shear //decrease counter and go to next digit
+	loop shear #decrease counter and go to next digit
 	pushl $fmt_print
 	call printf
 	addl $4, %esp
