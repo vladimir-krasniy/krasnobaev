@@ -1,6 +1,6 @@
   .data
   .globl main
-  
+  //Almost the same as task_1
 format_string:
   .string "%d"
 int_label:
