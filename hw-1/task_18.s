@@ -1,6 +1,6 @@
   .data
         .globl main
-//The program is almost obvious (excerp for division), almost copied from our classwork task 3
+#The program is almost obvious (excerp for division), almost copied from our classwork task 3
 
 int_oper1:
         .space 4
