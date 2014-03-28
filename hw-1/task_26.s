@@ -45,7 +45,7 @@ minim:
 
 finishing:
         movl    %eax, min
-        pushl   $32
+        pushl   %eax
         pushl   $input_string
         call    printf
         addl    $8, %esp
