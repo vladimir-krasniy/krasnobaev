@@ -4,7 +4,7 @@
 add:
         .space 4
 arr:
-        .int 3, 34, 23, 22, 3, 9, 23, 77, 35
+        .int 3, 34, 23, 22, 3, 9, 23, 73, 35
 min:
         .int
 input_string:
