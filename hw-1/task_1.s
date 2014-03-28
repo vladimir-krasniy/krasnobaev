@@ -3,7 +3,7 @@
   
 format_string:
   .string "%d"
-int_label:
+int_space:
   .space 4
 fmt_print:
 	.string "\n"
@@ -16,13 +16,13 @@ main:
 	movl %esp, %ebp
 	
 //Input
-	pushl $int_label
+	pushl $int_space
 	pushl $format_string
 	call scanf
 	addl $8, %esp
 	
 //Real main
-	movl int_label, %eax
+	movl int_space, %eax
 	movl $32, %ecx //ecx is digit counter 
 	movl $0, %edx
 	
