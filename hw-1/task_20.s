@@ -1,6 +1,6 @@
   .data
         .globl main
-        .comm arr,404,32
+        .comm arr,400,32
 
 input_string:
         .string "%d"
