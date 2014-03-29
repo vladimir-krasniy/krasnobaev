@@ -26,7 +26,7 @@ main:
 	movl $32, %ecx #ecx is digit counter 
 	movl $0, %edx
 	
-shear:
+again:
 	shll $1, %eax
 	movl $0, %ebx
 	jnb print #do not print first '0'
@@ -48,7 +48,7 @@ print:
 	popl %ecx
 	
 loop_end:
-	loop shear #decrease counter and go to next digit
+	loop again #decrease counter and go to next digit
 	pushl $fmt_print
 	call printf
 	addl $4, %esp
