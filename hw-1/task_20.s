@@ -1,56 +1,67 @@
   .data
         .globl main
+        .comm arr,404,32
 
-add:
-        .space 4
-arr:
-        .int 3, 34, 23, 22, 3, 9, 23, 73, add
-min:
-        .int
 input_string:
         .string "%d"
-out_string:
+print_string:
         .string "%d\n"
+number:
+        .long 0x00000000
 
         .text
+
 main:
 //Epilogue
-        pushl   %ebp
-        movl    %esp, %ebp
+        pushl %ebp
+        movl %esp, %ebp
 
-//Input
-        pushl $add
+//Input number
+        pushl $number
         pushl $input_string
         call scanf
         addl $8, %esp
+        movl number, %ecx
+again:
+//Input elements
+        pushl %ecx
+        movl $arr, %ebx
+        addl %ecx, %ebx
+        addl %ecx, %ebx
+        addl %ecx, %ebx
+        addl %ecx, %ebx
+        pushl %ebx
+        pushl $input_string
+        call scanf
+        addl $8, %esp
+        popl %ecx
+        loop again
 
+        movl $arr+4, %ebx
+        movl (%ebx), %eax
+        movl $arr, %ebx
+        movl number, %ecx
 
-        movl    $0, %edi
-        movl    arr(, %edi, 4), %eax
+again_min:
+        addl $4, %ebx
+        cmp %eax, (%ebx)
+        jle min
+next:
+        loop again_min
+        jmp finish
 
+min:
+        movl (%ebx), %eax
+        jmp next
 
-compr:
-        cmpl    $9, %edi
-        jae     finishing
+finish:
+        pushl %eax
+        pushl $print_string
+        call printf
+        addl $8, %esp
 
-        cmpl    arr(, %edi, 4), %eax
-        jb      minim
-
-        movl    arr(, %edi, 4), %eax
-
-
-minim:
-        incl    %edi
-        jmp     compr
-
-finishing:
-        movl    %eax, min
-        pushl   %eax
-        pushl   $input_string
-        call    printf
-        addl    $8, %esp
-
-        movl    $0, %eax
-        popl    %ebp
-
+//Epilogue
+        movl %ebp, %esp
+        popl %ebp
         ret
+
