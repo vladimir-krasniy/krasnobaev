@@ -24,7 +24,7 @@ main:
 	movl int_space, %eax
 	movl $32, %ecx
 
-shear:
+again:
 	shll $1, %eax
 	movl $0, %ebx
 	jnb print
@@ -39,10 +39,10 @@ print:
 	addl $8, %esp
 	popl %eax
 	popl %ecx
-	loop shear
+	loop again
 
 loop_end:
-	loop shear
+	loop again
 	pushl $fmt_print
 	call printf
 	addl $4, %esp
