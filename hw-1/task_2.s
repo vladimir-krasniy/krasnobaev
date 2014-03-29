@@ -1,54 +1,48 @@
   .data
-  .globl main
-  #Almost the same as task_1
-format_string:
-  .string "%d"
-int_space:
-  .space 4
-fmt_print:
-	.string "\n"
+        .globl main
+input_string:
+        .string "%d"
+int:
+        .space 4
+print_string:
+        .string "\n"
 
-  .text
+        .text
 main:
 
 //Prologue
-	pushl %ebp
-	movl %esp, %ebp
+        pushl %ebp
+        movl %esp, %ebp
 
 //Input
-	pushl $int_space
-	pushl $format_string
-	call scanf
+        pushl $int
+        pushl $input_string
+        call scanf
 
-//Real main
-	movl int_space, %eax
-	movl $32, %ecx
+//Real program
+        movl int, %eax
+        movl $32, %ecx
 
-again:
-	shll $1, %eax
-	movl $0, %ebx
-	jnb print
-	incl %ebx
-
+shear:
+        shll $1, %eax
+        movl $0, %ebx
+        jnc print
+        incl %ebx
 print:
-	pushl %ecx
-	pushl %eax
-	pushl %ebx
-	pushl $format_string
-	call printf
-	addl $8, %esp
-	popl %eax
-	popl %ecx
-	loop again
-
-loop_end:
-	loop again
-	pushl $fmt_print
-	call printf
-	addl $4, %esp
-	movl $0, %eax
+        pushl %ecx
+        pushl %eax
+        pushl %ebx
+        pushl $input_string
+        call printf
+        addl $8, %esp
+        popl %eax
+        popl %ecx
+        loop shear
 
 //Epilogue
-	movl %ebp, %esp	
-	popl %ebp
-	ret
+        pushl $print_string
+        call printf
+        movl $0, %eax
+        movl %ebp, %esp
+        popl %ebp
+        ret
