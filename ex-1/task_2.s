@@ -1,12 +1,16 @@
 	.data
         .globl main
-#By the end of a program opernds are still in eax & abx, the sum is printed and stored in edx
+#By the end of a program operands are still in eax & ebx, the sum is printed and stored in ecx if it is small enougn, else just printed
+
 input_string:
         .string "%d"
+bad_string:
+	.string"2^32 + %d"
 number1:
         .space 4
 number2:
         .space 4
+
 
         .text
 main:
@@ -28,20 +32,28 @@ main:
         call scanf
         movl number2, %ebx
         add $8, %esp
-        popl %eax
-   	movl %eax, %edx
-        addl %ebx, %edx
-	
+        popl %eax 
+   	movl %eax, %ecx
+        addl %ebx, %ecx
+	jno good	
+bad:
+	addl $2147483648, %ecx
+	pushl %ecx
+	pushl $bad_string
+	call printf
+	add $8, %esp
+	jmp finish	
+good:
 	pushl %eax
 	pushl %ebx
-        pushl %edx
+        pushl %ecx
         pushl $input_string
         call printf
         add $4, %esp
-	popl %edx
+	popl %ecx
 	popl %ebx
 	popl %eax	
-
+finish:
 //Epilogue
         movl %ebp, %esp
         popl %ebp
