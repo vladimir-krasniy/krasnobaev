@@ -1,6 +1,8 @@
 	.data
 	.globl main
-#Program counts the number of digits. Prints if it is odd or even and the number of digits divided by 2 IF IT IS POSSIBLE TO DIVIDE.
+#Program counts the number of digits. 
+#Prints if it is odd or even and the number of digits divided by 2 IF IT IS POSSIBLE TO DIVIDE.
+
 number:
 	.space 4
 
@@ -11,7 +13,7 @@ divable_string:
 undivable_string:
 	.string "Odd"
 print_string:
-	.string "\n%d"
+	.string ", %d"
 	.text
 main:
 //Prologue
