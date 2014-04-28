@@ -4,7 +4,7 @@
 int main () {
 
 /*Base numbers & conditions*/
-	int N, M = 10;
+	int N, M = 1;
 	N = 10;
 	double h, Cx = 1.0, k = 0.6;
 	h = 2.0/N; //Piece size
@@ -49,6 +49,6 @@ int main () {
 		}
 	}
 
-//Now wo have masses of x[i] and U[i] that should be drawn
+//Now wo have masses of x[i] and U[i] that should be drawn somehow
 return 0;
 }
