@@ -2,7 +2,7 @@
 #The prog does some stupid things using chains
 #It firstly prints 2 of your inputted strings in another order
 #Next it prints "SAME\DIFF" if your strings are identical or different
-#That it prints "SAME\DIFF" if your first string starts with "A" or not
+#Than it prints "SAME\DIFF" if your first string starts with "A" or not
 
         .globl main
 Good:
